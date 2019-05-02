@@ -11,12 +11,9 @@ RESET  := $(shell tput -Txterm sgr0)
 ## initialise project environment
 init:
 
-## install dependencies
-install:
-	go install gitlab.mantelgroup.com.au/next/webserver
 ## build project
 build:
-	go build gitlab.mantelgroup.com.au/next/webserver
+	go build -o microservice .
 
 ## run project
 run:
