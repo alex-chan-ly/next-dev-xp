@@ -13,7 +13,7 @@ init:
 
 ## build project
 build:
-	go build -o microservice .
+	go build -o bin/main ./cmd/webapp/main.go
 
 ## run project
 run:
