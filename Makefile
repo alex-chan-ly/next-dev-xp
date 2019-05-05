@@ -12,8 +12,8 @@ RESET  := $(shell tput -Txterm sgr0)
 init:
 
 ## build project
-build:
-	go build -o bin/main ./cmd/webapp/main.go
+build.webapp:
+	go build -o bin/webapp ./cmd/webapp
 
 ## run project
 run:

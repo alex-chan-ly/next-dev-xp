@@ -1,0 +1,14 @@
+apiVersion: skaffold/v1beta9
+kind: Config
+build:
+  artifacts:
+  - image: asia.gcr.io/developer-experience-239623/webapp/app
+    context: ./webapp
+    sync:
+      webapp/pkg/webapp/homepage.html: /root/pkg/webapp/homepage.html
+  tagPolicy:
+    sha256: {}
+profiles:
+- name: local-development
+  deploy:
+

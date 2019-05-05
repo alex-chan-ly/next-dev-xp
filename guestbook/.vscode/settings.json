@@ -1,0 +1,10 @@
+{
+  "cloudcode.profile-cluster-map": {
+    "[default]": "minikube",
+    "prod": "gke_developer-experience-239623_australia-southeast1-b_dev-xp",
+    "non-prod": "gke_developer-experience-239623_australia-southeast1-b_dev-xp"
+  },
+  "cloudcode.image-registry": {
+    "name": "gcr.io/developer-experience-239623"
+  }
+}

@@ -1,0 +1,23 @@
+apiVersion: skaffold/v1beta6
+kind: Config
+build:
+  artifacts:
+    - image: guestbook-backend
+      context: src/backend
+    - image: guestbook-frontend
+      context: src/frontend
+  tagPolicy:
+    sha256: {}
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes-manifests/**
+profiles:
+  - name: cloudbuild
+    build:
+      googleCloudBuild: {}
+  - build:
+      googleCloudBuild:
+        projectId: developer-experience-239623
+    deploy: {}
+    name: non-prod
