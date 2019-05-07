@@ -48,7 +48,9 @@ spec:
     - name: path
       description: Path to the manifest to apply
     - name: yqArg
-      description: Okay this is a hack, but I didn't feel right hard-codeing `-d1` down below
+      description:
+        Okay this is a hack, but I didn't feel right hard-coding `-d1` down
+        below
     - name: yamlPathToImage
       description: The path to the image to replace in the yaml manifest (arg to yq)
     clusters:
@@ -96,10 +98,10 @@ spec:
     params:
     - name: path
       value: /workspace/workspace/webapp/kubernetes-manifests/webapp.deployment.yaml
-    - name: yqArg
-      value: "-d1"
     - name: yamlPathToImage
       value: "spec.template.spec.containers[0].image"
+    - name: yqArg
+      value: "-d1"
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
