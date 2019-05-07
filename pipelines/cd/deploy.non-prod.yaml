@@ -95,7 +95,7 @@ spec:
         resource: webapp-image
     params:
     - name: path
-      value: /workspace/workspace/webapp/kubernetes-manifests/
+      value: /workspace/workspace/webapp/kubernetes-manifests/webapp.deployment.yaml
     - name: yqArg
       value: "-d1"
     - name: yamlPathToImage
