@@ -1,3 +1,11 @@
 {
-  "go.formatTool": "goimports"
+  "go.formatTool": "goimports",
+  "cloudcode.profile-cluster-map": {
+    "gke-non-prod-guestbook": "gke_developer-experience-239623_australia-southeast1-a_dev-xp",
+    "deploy-gke-non-prod-guestbook": "gke_developer-experience-239623_australia-southeast1-a_dev-xp",
+    "local-guestbook": "docker-desktop"
+  },
+  "cloudcode.image-registry": {
+    "name": "gcr.io/developer-experience-239623"
+  }
 }

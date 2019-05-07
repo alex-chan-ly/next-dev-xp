@@ -98,13 +98,13 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: backend-deployment-pipeline
+  name: backend-pipeline
 spec:
   resources:
   - name: source-repo
     type: git
-  - name: image
-    type: deployment-image
+  - name: deployment-image
+    type: image
   tasks:
   - name: deploy-application
     taskRef:
@@ -126,13 +126,13 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: backend-deployment-pipeline
+  name: frontend-pipeline
 spec:
   resources:
   - name: source-repo
     type: git
-  - name: image
-    type: deployment-image
+  - name: deployment-image
+    type: image
   tasks:
   - name: deploy-application
     taskRef:
@@ -145,7 +145,7 @@ spec:
         resource: deployment-image
     params:
     - name: path
-      value: /workspace/workspace/guestbook/kubernetes-manifests/guestbook-backend.yaml
+      value: /workspace/workspace/guestbook/kubernetes-manifests/guestbook-frontend.yaml
     - name: yamlPathToImage
       value: "spec.template.spec.containers[0].image"
     - name: yqArg
@@ -154,13 +154,13 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: mongodb-deployment-pipeline
+  name: mongodb-pipeline
 spec:
   resources:
   - name: source-repo
     type: git
-  - name: image
-    type: deployment-image
+  - name: deployment-image
+    type: image
   tasks:
   - name: deploy-application
     taskRef:
@@ -182,17 +182,17 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  name: backend-deployment-pipeline
+  name: backend-pipeline
 spec:
   pipelineRef:
-    name: backend-deployment-pipeline
+    name: backend-pipeline
   trigger:
     type: manual
   serviceAccount: 'default'
   resources:
   - name: source-repo
     resourceRef:
-      name: dev-xp-git 
+      name: dev-xp-git
   - name: deployment-image
     resourceRef:
       name: guestbook-backend-image
@@ -200,10 +200,10 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  name: frontend-deployment-pipeline
+  name: frontend-pipeline
 spec:
   pipelineRef:
-    name: frontend-deployment-pipeline
+    name: frontend-pipeline
   trigger:
     type: manual
   serviceAccount: 'default'
@@ -218,10 +218,10 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  name: mongodb-deployment-pipeline
+  name: mongodb-pipeline
 spec:
   pipelineRef:
-    name: mongodb-deployment-pipeline
+    name: mongodb-pipeline
   trigger:
     type: manual
   serviceAccount: 'default'
