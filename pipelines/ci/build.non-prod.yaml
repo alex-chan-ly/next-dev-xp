@@ -18,7 +18,7 @@ spec:
   type: image
   params:
     - name: url
-      value: gcr.io/developer-experience-239623/webapp/app
+      value: gcr.io/developer-experience-239623/webapp
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Task
@@ -51,7 +51,7 @@ spec:
         - --dockerfile=${inputs.params.pathToDockerFile}
         - --destination=${outputs.resources.builtImage.url}
         - --context=${inputs.params.pathToContext}
-        - --insecure
+        # - --insecure
         - --verbosity=debug
 ---
 apiVersion: tekton.dev/v1alpha1
