@@ -3,7 +3,8 @@ import {
   Heading,
   Slide,
   CodePane,
-  Text
+  Text,
+  Image,
 } from 'spectacle'
 import Terminal from "spectacle-terminal";
 import CodeSlide from 'spectacle-code-slide'
@@ -11,6 +12,7 @@ import { coursePlanDayOne, coursePlanDayTwo, localArchitectureLabels, repoStruct
 import CoursePlan from './components/CoursePlan';
 import Architecture from './components/Architecture';
 import Topology from './components/Topology';
+import Kasna from '../../../assets/kasna.jpg';
 const STYLE = {
   blue: { color: '#2196f3' },
   yellow: { color: 'yellow' },
@@ -33,43 +35,13 @@ const style = {
 }
 export default [
   <Slide align="center center" transition={['zoom']} bgColor='primary'>
-    <Heading size={1} fit caps lineHeight={1} textColor='secondary'>
-      Istio Training
+    <Image src={Kasna}/>
+    <Heading margin="100px 0 0 0" size={1} fit caps lineHeight={1} textColor='secondary'>
+      Developer Experience
     </Heading>
-    <Text margin='10px 0 0' textColor='tertiary' size={5} bold>
+    <Text margin='30px 0 0' textColor='tertiary' size={5} bold>
       Ben Ebsworth
     </Text>
-  </Slide>,
-  <Slide align="center center" transition={['fade']} bgColor='primary'>
-    <Heading  size={6} textColor='secondary' caps>
-      Course Plan
-    </Heading>
-    <Text margin={"0 0 10px 0"} size={6} textColor='secondary'>
-      Day One
-    </Text>
-    <CoursePlan content={coursePlanDayOne}/>
-  </Slide>,
-    <Slide align="center center" transition={['fade']} bgColor='primary' >
-    <Heading  size={6} textColor='secondary' caps>
-      Course Plan
-    </Heading>
-    <Text margin={"0 0 10px 0"} size={6} textColor='secondary'>
-      Day Two
-    </Text>
-    <CoursePlan content={coursePlanDayTwo}/>
-  </Slide>,
-  <Slide transition={['fade']} bgColor='primary' textColor='tertiary'>
-    <Heading size={6} textColor='secondary' caps>
-      Getting Started 
-    </Heading>
-    <Text margin={"0 0 20px 0"} size={6} textColor='secondary'>
-      Install the training repository and bootstrap your environment as follows:
-    </Text>
-    <CodePane
-      source={gitClone}
-      lang="vim"
-      textSize={24}
-  />
   </Slide>,
   <CodeSlide
     transition={['fade']}
@@ -84,24 +56,6 @@ export default [
     code={require('raw-loader!./code-examples/repostructure.txt')}
     ranges={repoStructureContent}
   />,
-  <Slide transition={['fade']} bgColor='primary' textColor='tertiary'>
-    <Heading size={6} textColor='secondary' caps>
-      Get Help
-    </Heading>
-    <Terminal title="1. castlemilk@digio: ~(zsh)" output={[
-              <div style={{ fontSize: 16}}>$ make help</div>,
-              <div style={{ fontSize: 16}}>
-                <div>Usage:</div>
-                <div style={{ display: 'flex'}}><div style={STYLE.yellow}>{"  make "}</div><div style={STYLE.green}>{"<target>"}</div></div>
-                <div style={{ display: 'flex'}}>Targets:</div>
-                <div style={{ display: 'flex'}}><div style={STYLE.blue}>Bootstrap</div></div>
-                <div style={{ display: 'flex'}}><div style={STYLE.yellow}>  bootstrap</div><div style={STYLE.green}> bootstrap training environment</div></div>
-                <div style={{ display: 'flex'}}><div style={STYLE.blue}>Services</div></div>
-                <div style={{ display: 'flex'}}><div style={STYLE.yellow}>  build</div><div style={STYLE.green}> build all services</div></div>
-                <div style={{ display: 'flex'}}>...</div>
-              </div>]}
-            />
-  </Slide>,
   <Slide transition={['fade']} bgColor='primary' textColor='secondary' align="center center" maxWidth={1500}>
     <Architecture labels={localArchitectureLabels} />
   </Slide>,

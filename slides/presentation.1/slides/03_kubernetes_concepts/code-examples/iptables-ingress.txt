@@ -1,6 +1,0 @@
--A KUBE-NODEPORTS -s 127.0.0.0/8 -p tcp -m comment --comment "ingress-nginx/ingress-nginx:http" -m tcp --dport 30129 -j KUBE-MARK-MASQ
--A KUBE-NODEPORTS -p tcp -m comment --comment "ingress-nginx/ingress-nginx:http" -m tcp --dport 30129 -j KUBE-SVC-REQ4FPVT7WYF4VLA 
--A KUBE-SERVICES -d 10.107.108.212/32 -p tcp -m comment --comment "ingress-nginx/ingress-nginx:http cluster IP" -m tcp --dport 80 -j KUBE-SVC-REQ4FPVT7WYF4VLA
--A KUBE-SVC-REQ4FPVT7WYF4VLA -m comment --comment "ingress-nginx/ingress-nginx:http" -j KUBE-SEP-ZLME7X6WVGOK3IL5
--A KUBE-SEP-ZLME7X6WVGOK3IL5 -s 10.1.1.108/32 -m comment --comment "ingress-nginx/ingress-nginx:http" -j KUBE-MARK-MASQ
--A KUBE-SEP-ZLME7X6WVGOK3IL5 -p tcp -m comment --comment "ingress-nginx/ingress-nginx:http" -m tcp -j DNAT --to-destination 10.1.1.108:80
