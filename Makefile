@@ -7,7 +7,7 @@ WHITE  := $(shell tput -Txterm setaf 7)
 RED		 := $(shell tput -Txterm setaf 1)
 CYAN	 := $(shell tput -Txterm setaf 6)
 RESET  := $(shell tput -Txterm sgr0)
-
+PROJECT_ID=developer-experience-239709
 ## initialise project environment
 init:
 
@@ -19,11 +19,25 @@ build.webapp:
 run.webapp:
 	webapp/bin/webapp
 
+## start slidepack
+run.slides:
+	cd slides; npm run start
+
 ## install tekton to target cluster
 tekton.install:
+	kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user ben.ebsworth@digio.com.au
+	sleep 3
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/latest/release.yaml
 docker.registry.create:
 	docker run -d -p 5000:5000 --name registry-srv -e REGISTRY_STORAGE_DELETE_ENABLED=true registry:2
+
+cluster.gke.install:
+	gcloud container clusters create dev-xp \
+		--zone="australia-southeast1-a" \
+		--machine-type="n1-standard-2" \
+		--num-nodes="3" \
+		--project="${PROJECT_ID}" \
+		--scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/devstorage.full_control"
 
 
 

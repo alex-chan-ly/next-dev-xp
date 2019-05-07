@@ -31,7 +31,7 @@ spec:
   type: image
   params:
     - name: url
-      value: gcr.io/developer-experience-239623/guestbook-frontend
+      value: asia.gcr.io/developer-experience-239709/guestbook-frontend
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
@@ -51,7 +51,7 @@ spec:
   type: image
   params:
     - name: url
-      value: gcr.io/developer-experience-239623/guestbook-backend
+      value: asia.gcr.io/developer-experience-239709/guestbook-backend
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Task

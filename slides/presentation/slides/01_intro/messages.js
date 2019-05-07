@@ -51,13 +51,26 @@ export const kustomizeFolderLayout = [
 export const skaffoldConfig = [
     { loc: [0, 42], title: 'Skaffold Configuration' },
     {
-        loc: [1, 13],
+        loc: [3, 8],
         title: 'Build',
-        note: '"Bases" represent contextualized resources'
+        note:
+        'All of the baseline backend deployment resources would be defined here'
     },
     {
-        loc: [1, 5],
-        title: 'Backend',
+        loc: [8, 9],
+        title: 'Test',
+        note:
+        'All of the baseline backend deployment resources would be defined here'
+    },
+    {
+        loc: [9, 13],
+        title: 'Deploy',
+        note:
+        'All of the baseline backend deployment resources would be defined here'
+    },
+    {
+        loc: [13, 24],
+        title: 'Profiles',
         note:
         'All of the baseline backend deployment resources would be defined here'
     },

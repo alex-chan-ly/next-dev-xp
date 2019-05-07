@@ -2,9 +2,9 @@ apiVersion: skaffold/v1beta6
 kind: Config
 build:
   artifacts:
-    - image: guestbook-backend
+    - image: asia.gcr.io/developer-experience-239709/guestbook-backend
       context: guestbook/src/backend
-    - image: guestbook-frontend
+    - image: asia.gcr.io/developer-experience-239709/guestbook-frontend
       context: guestbook/src/frontend
     - image: webapp-frontend
       context: webapp/
@@ -18,24 +18,24 @@ profiles:
   - name: gke-non-prod-guestbook 
     build:
       artifacts:
-      - image: asia.gcr.io/developer-experience-239623/guestbook-backend
+      - image: asia.gcr.io/developer-experience-239709/guestbook-backend
         context: guestbook/src/backend
-      - image: asia.gcr.io/developer-experience-239623/guestbook-frontend
+      - image: asia.gcr.io/developer-experience-239709/guestbook-frontend
         context: guestbook/src/frontend
       googleCloudBuild:
-        projectId: developer-experience-239623
+        projectId: developer-experience-239709
     deploy:
       kustomize:
         path: ./guestbook/resources/overlays/non-production
   - name: gke-prod-guestbook 
     build:
       artifacts:
-      - image: asia.gcr.io/developer-experience-239623/guestbook-backend
+      - image: asia.gcr.io/developer-experience-239709/guestbook-backend
         context: guestbook/src/backend
-      - image: asia.gcr.io/developer-experience-239623/guestbook-frontend
+      - image: asia.gcr.io/developer-experience-239709/guestbook-frontend
         context: guestbook/src/frontend
       googleCloudBuild:
-        projectId: developer-experience-239623
+        projectId: developer-experience-239709
     deploy:
       kustomize:
         path: ./guestbook/resources/overlays/production

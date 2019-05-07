@@ -25,6 +25,8 @@ import Tekton from '../../../assets/tekton.jpg'
 import Spinnaker from '../../../assets/spinnaker.jpg'
 import Skaffold from '../../../assets/skaffold.jpg'
 import Kustomize from '../../../assets/kustomize.jpg'
+import ConfigManagement from '../../../assets/configManagement.jpg'
+import DevXP from '../../../assets/devXP.jpg'
 import Jib from '../../../assets/jib.jpg'
 import Landscape1 from '../../../assets/landscape-1.jpg'
 import Pipelines from '../../../assets/pipelines.jpg'
@@ -76,12 +78,12 @@ export default [
     bgImage={Landscape1}
     bgDarken={0.2}
   >
-    <Heading textColor='black' lineHeight={2} textAlign='right'>
+    <Heading textColor="#34a752" lineHeight={2} textAlign='right'>
       Current Landscape
     </Heading>
   </Slide>,
-  <Slide align='center center' transition={['zoom']} bgColor='primary'>
-    <Heading textColor='black'>Build Tools</Heading>
+  <Slide align='center center' transition={['slide']} bgColor='primary'>
+    <Heading textColor='#4285f4'>Build Tools</Heading>
   </Slide>,
   <Slide align='center center' transition={['zoom']} bgColor='primary'>
     <Image src={Kaniko} />
@@ -128,9 +130,9 @@ export default [
     </Appear>
   </List>
   </Slide>,
-  <Slide align='center center' transition={['zoom']} bgColor='primary' bgImage={Pipelines}
+  <Slide align='center center' transition={['slide']} bgColor='primary' bgImage={Pipelines}
   bgDarken={0.50}>
-    <Heading textColor={"green"}>Pipelines</Heading>
+    <Heading textColor={"#fabc08"}>Pipelines</Heading>
   </Slide>,
   <Slide align='center center' transition={['zoom']} bgColor='primary'>
   <Image height={200} src={Tekton} />
@@ -177,8 +179,9 @@ export default [
     </Appear>
   </List>
   </Slide>,
-  <Slide align='center center' transition={['zoom']} bgColor='primary'>
-    <Heading>Configuration Management & Templating</Heading>
+  <Slide align='center center' transition={['slide']} bgColor='primary' bgImage={ConfigManagement}
+  bgDarken={0.50}>
+    <Heading textColor="#ea4335">Configuration Management & Templating</Heading>
   </Slide>,
   <Slide align='center center' transition={['zoom']} bgColor='primary'>
   <Image height={200} src={Kustomize} />
@@ -230,8 +233,8 @@ export default [
     </Appear>
   </List>
   </Slide>,
-  <Slide align='center center' transition={['zoom']} bgColor='primary'>
-    <Heading>Developer Experience</Heading>
+  <Slide align='center center' transition={['slide']} bgColor='primary' bgColor='primary' bgDarken={0.50} bgImage={DevXP}>
+    <Heading textColor="#34a752">Developer Experience</Heading>
   </Slide>,
   <Slide align='center center' transition={['zoom']} bgColor='primary'>
   <Heading textColor="#4285f4">Cloud Code</Heading>

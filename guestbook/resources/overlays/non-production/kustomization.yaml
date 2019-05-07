@@ -8,9 +8,9 @@ bases:
 - ../../mongodb
 images:
 - name: guestbook-frontend
-  newName: asia.gcr.io/developer-experience-239623/guestbook-frontend
+  newName: asia.gcr.io/developer-experience-239709/guestbook-frontend
 - name: guestbook-backend
-  newName: asia.gcr.io/developer-experience-239623/guestbook-backend
+  newName: asia.gcr.io/developer-experience-239709/guestbook-backend
 patches:
 - frontend_replica_count.yaml
 - backend_replica_count.yaml
@@ -20,4 +20,9 @@ vars:
     objref:
       kind: Service
       name: guestbook-mongodb
+      apiVersion: v1
+  - name: BACKEND_SERVICE
+    objref:
+      kind: Service
+      name: guestbook-backend
       apiVersion: v1
