@@ -1,0 +1,20 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: api-rating-auth-jwt
+  namespace: mesh
+spec:
+  targets:
+  - name: api-rating
+  peers:
+  - mtls:
+  origins:
+  - jwt:
+      issuer: "http://api-auth.mesh.svc.cluster.local"
+      jwksUri: "http://api-auth.mesh.svc.cluster.local/api/auth/v1/auth/keys"
+      jwt_headers:
+      - "x-jwt-assertion"
+      audiences:
+      - admin
+  originIsOptional: false
+  principalBinding: USE_ORIGIN

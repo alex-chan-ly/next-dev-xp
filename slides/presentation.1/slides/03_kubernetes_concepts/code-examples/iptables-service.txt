@@ -1,0 +1,7 @@
+-A KUBE-SERVICES -d 10.110.41.12/32 -p tcp -m comment --comment "simple/api-auth: cluster IP" -m tcp --dport 80 -j KUBE-SVC-UGWGCZNKOGVOFQQY
+-A KUBE-SVC-UGWGCZNKOGVOFQQY -m comment --comment "simple/api-auth:" -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-IQTFBWSPJSUOLNFT
+-A KUBE-SVC-UGWGCZNKOGVOFQQY -m comment --comment "simple/api-auth:" -j KUBE-SEP-TXQDOE75FD64HURN
+-A KUBE-SEP-IQTFBWSPJSUOLNFT -s 10.1.1.58/32 -m comment --comment "simple/api-auth:" -j KUBE-MARK-MASQ
+-A KUBE-SEP-IQTFBWSPJSUOLNFT -p tcp -m comment --comment "simple/api-auth:" -m tcp -j DNAT --to-destination 10.1.1.58:80
+-A KUBE-SEP-TXQDOE75FD64HURN -s 10.1.1.65/32 -m comment --comment "simple/api-auth:" -j KUBE-MARK-MASQ
+-A KUBE-SEP-TXQDOE75FD64HURN -p tcp -m comment --comment "simple/api-auth:" -m tcp -j DNAT --to-destination 10.1.1.65:80

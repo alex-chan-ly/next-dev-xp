@@ -13,12 +13,17 @@ init:
 
 ## build project
 build.webapp:
-	go build -o bin/webapp ./cmd/webapp
+	go build -o webapp/bin/webapp ./webapp/cmd/webapp
 
 ## run project
-run:
-	${GOPATH}/bin/webserver
+run.webapp:
+	webapp/bin/webapp
 
+## install tekton to target cluster
+tekton.install:
+	kubectl apply -f https://storage.googleapis.com/tekton-releases/latest/release.yaml
+docker.registry.create:
+	docker run -d -p 5000:5000 --name registry-srv -e REGISTRY_STORAGE_DELETE_ENABLED=true registry:2
 
 
 

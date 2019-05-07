@@ -1,0 +1,22 @@
+apiVersion: authentication.istio.io/v1alpha1
+kind: Policy
+metadata:
+  name: mTLS_enable
+  namespace: mesh
+spec:
+  target:
+  - name: api-information
+    ports:
+    - number: 80
+  peers:
+  - mtls:
+  origins:
+  - jwt:
+      issuer: "https://auth.training.local"
+      audiences:
+      - "api-information"
+      jwksUri: "https://auth.training.local/api/auth/v1/auth/.well-known/openid-configuration"
+      jwt_headers:
+      - "x-goog-iap-jwt-assertion"
+  originIsOptional: true
+  principalBinding: USE_ORIGIN

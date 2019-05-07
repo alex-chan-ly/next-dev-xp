@@ -1,0 +1,11 @@
+# Ignore everything
+**
+
+# Allow files and directories
+!/Dockerfile
+!/go.mod
+!/go.sum
+!/bin
+!/cmd
+!/pkg
+!/test

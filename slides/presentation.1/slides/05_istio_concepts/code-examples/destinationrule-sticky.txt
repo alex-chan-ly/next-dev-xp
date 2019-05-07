@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: stock-to-external
+spec:
+  host: stock.training.local 
+  subsets:
+  - name: external-sticky
+    trafficPolicy:
+      portLevelSettings:
+      - port:
+          number: 443 
+        loadBalancer:
+          consistentHash:
+            httpCookie:
+              name: user
+              ttl: 0s
+        outlierDetection:
+          consecutiveErrors: 7
+          interval: 5m
+          baseEjectionTime: 15m
+        connectionPool:
+          tcp:
+            maxConnections: 100
+            connectTimeout: 30ms
+          http:
+            http1MaxPendingRequests: 1024
+            http2MaxRequests: 1024
+            maxRequestsPerConnection: 30
+            maxRetries: 3
+        tls:
+          mode: MUTUAL
+          clientCertificate: /etc/certs/stock/tls.crt
+          privateKey: /etc/certs/stock/tls.key
+          caCertificates: /etc/certs/stock/ca.pem

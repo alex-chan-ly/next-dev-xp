@@ -1,0 +1,26 @@
+apiVersion: config.istio.io/v1alpha2
+kind: QuotaSpec
+metadata:
+  name: requestcount
+  namespace: istio-system
+spec:
+  rules:
+  - rules:
+    - match:
+      clause:
+        request.path:
+          string_prefix: /
+        request.http_method:
+          string_exact: GET
+    - match:
+      clause:
+        request.path:
+          string_prefix: /
+        request.http_method:
+          string_exact: POST 
+    - quotas:
+      - quota: read_count
+        charge: 1
+    - quotas:
+      - quota: write_count
+        charge: 1

@@ -1,0 +1,40 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: api-gateway 
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-api
+      protocol: HTTP
+    hosts:
+    - api.training.local
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https-api
+      protocol: HTTPS
+    hosts:
+    - api.training.local
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/certs/servercert.pem
+      privateKey: /etc/certs/privatekey.pem
+  - port:
+      number: 443
+      name: https-stock
+      protocol: HTTPS
+    hosts:
+    - stock.training.local 
+    tls:
+      caCertificates: /etc/certs/root-cert.pem
+      mode: MUTUAL
+      privateKey: /etc/certs/key.pem
+      serverCertificate: /etc/certs/cert-chain.pem
+      subjectAltNames:
+      - stock.training.local
+  

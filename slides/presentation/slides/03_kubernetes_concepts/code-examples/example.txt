@@ -1,0 +1,8 @@
+class Test {
+    constructor() {
+        this.example = 'lol'
+    }
+    run() {
+        console.log(this.example)
+    }
+}

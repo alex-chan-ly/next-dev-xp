@@ -1,0 +1,44 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: stock-to-external
+spec:
+  host: stock.training.local
+  trafficPolicy:
+    loadBalancer:
+      loadBalancer:
+        simple: ROUND_ROBIN
+  subsets:
+  - name: external
+    trafficPolicy:
+      portLevelSettings:
+      - port:
+          number: 443 
+        tls:
+          mode: MUTUAL
+          clientCertificate: /etc/certs/stock/tls.crt
+          privateKey: /etc/certs/stock/tls.key
+          caCertificates: /etc/certs/stock/ca.pem
+  - name: external-specific 
+    trafficPolicy:
+      portLevelSettings:
+      - port:
+          number: 443 
+        loadBalancer:
+          simple: ROUND_ROBIN
+        outlierDetection:
+          consecutiveErrors: 7
+          interval: 5m
+          baseEjectionTime: 15m
+        connectionPool:
+          http:
+            http1MaxPendingRequests: 1024
+            http2MaxRequests: 1024
+            maxRequestsPerConnection: 30
+            maxRetries: 3
+        tls:
+          mode: MUTUAL
+          clientCertificate: /etc/certs/stock/tls.crt
+          privateKey: /etc/certs/stock/tls.key
+          caCertificates: /etc/certs/stock/ca.pem
+  
