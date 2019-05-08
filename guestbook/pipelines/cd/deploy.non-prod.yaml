@@ -21,7 +21,7 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/castlemilk/NEXTgen-developer-experience
+      value: https://github.com/castlemilk/next-dev-xp
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
