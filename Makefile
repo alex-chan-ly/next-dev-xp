@@ -25,7 +25,7 @@ run.slides:
 
 ## install tekton to target cluster
 tekton.install:
-	kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user ben.ebsworth@digio.com.au
+	kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user ben.ebsworth@digio.com.au --dry-run -o yaml | kubectl apply -f -
 	sleep 3
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/latest/release.yaml
 docker.registry.create:
