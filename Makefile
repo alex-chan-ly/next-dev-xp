@@ -30,14 +30,17 @@ tekton.install:
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/latest/release.yaml
 docker.registry.create:
 	docker run -d -p 5000:5000 --name registry-srv -e REGISTRY_STORAGE_DELETE_ENABLED=true registry:2
+clean.skaffold:
+	pkill -f skaffold
 
 cluster.gke.install:
-	gcloud container clusters create dev-xp \
+	time gcloud container clusters create dev-xp \
 		--zone="australia-southeast1-a" \
 		--machine-type="n1-standard-2" \
 		--num-nodes="3" \
 		--project="${PROJECT_ID}" \
-		--scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/devstorage.full_control"
+		--no-user-output-enabled \
+		--scopes="https://www.googleapis.com/auth/cloud-platform"
 
 
 

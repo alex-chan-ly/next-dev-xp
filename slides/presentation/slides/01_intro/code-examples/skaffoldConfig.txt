@@ -6,11 +6,16 @@ build:
       context: guestbook/src/backend
   tagPolicy:
     sha256: {}
-test: {}
+test:
+- image: gcr.io/k8s-skaffold/example
+  structureTests:
+  - ./test/*
 deploy:
   kubectl:
     manifests:
       - kubernetes-manifests/**
+  kustomize:
+        path: ./guestbook/resources/overlays/non-production    
 profiles:
   - name: gke-non-prod-guestbook 
     build:

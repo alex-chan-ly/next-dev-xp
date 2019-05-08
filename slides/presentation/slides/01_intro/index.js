@@ -27,6 +27,7 @@ import Skaffold from '../../../assets/skaffold.jpg'
 import Kustomize from '../../../assets/kustomize.jpg'
 import ConfigManagement from '../../../assets/configManagement.jpg'
 import DevXP from '../../../assets/devXP.jpg'
+import Github from '../../../assets/github.jpg'
 import Jib from '../../../assets/jib.jpg'
 import Landscape1 from '../../../assets/landscape-1.jpg'
 import Pipelines from '../../../assets/pipelines.jpg'
@@ -284,11 +285,15 @@ export default [
   titleStyle={style.title}
   noteStyle={style.note}
   codeStyle={{ fontSize: '0.8em' }}
-  style={{ height: 640, padding: '24% 0px 0% 0px', ...style.pre }}
+  style={{ height: 640, padding: '48% 0px 0% 0px', ...style.pre }}
   lang='yaml'
   bgColor='codeBackground'
   color={style.codeColor}
   code={require('raw-loader!./code-examples/skaffoldConfig.txt')}
   ranges={skaffoldConfig}
-/>
+  />,
+  <Slide align='center center' transition={['slide']}>
+    <Image height={200} src={Github} />
+    <Heading margin="50px 0 0 0" textColor="secondary" size={4}>https://github.com/castlemilk/next-dev-xp</Heading>
+  </Slide>,
 ]

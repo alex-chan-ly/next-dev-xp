@@ -49,29 +49,29 @@ export const kustomizeFolderLayout = [
     },
 ]
 export const skaffoldConfig = [
-    { loc: [0, 42], title: 'Skaffold Configuration' },
+    { loc: [0, 47], title: 'Skaffold Configuration' },
     {
-        loc: [3, 8],
+        loc: [2, 8],
         title: 'Build',
         note:
-        'All of the baseline backend deployment resources would be defined here'
+        'Define how you are building your artifacts, and what tools to use. I.e Docker, Kaniko, Cloud Build'
     },
     {
-        loc: [8, 9],
+        loc: [8, 12],
         title: 'Test',
         note:
-        'All of the baseline backend deployment resources would be defined here'
+        'Entrypoint for running tests, with your chosen test container image'
     },
     {
-        loc: [9, 13],
+        loc: [12, 18],
         title: 'Deploy',
         note:
-        'All of the baseline backend deployment resources would be defined here'
+        'Deploy your Kubernetes resources with a number of templating engines, i.e raw manifests, kustomize or helm.'
     },
     {
-        loc: [13, 24],
+        loc: [18, 39],
         title: 'Profiles',
         note:
-        'All of the baseline backend deployment resources would be defined here'
+        'Create contextualised configuration mappings for different environments/profiles'
     },
 ]
