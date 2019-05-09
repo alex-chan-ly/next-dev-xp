@@ -219,17 +219,17 @@ export default [
   <List>
     <Appear>
       <ListItem>
-      Kubernetes V2 provider enables utilizing of raw manifests and other templating tooling like Helm
+      Utilised by Cloud Code to manage the build, test and deploy phases of development 
       </ListItem>
     </Appear>
     <Appear>
       <ListItem>
-        Canary analysis capability, providing confidence in releases
+        Streamlines the management of contexts and/or environments by providing a "profile" approach to map configuration to a specific profile
       </ListItem>
     </Appear>
     <Appear>
       <ListItem>
-        Joined Continuous Delivery Foundation (CDF), along with Tekton and Jenkins
+        Integrates with modern build tooling, including Cloud Build, Kaniko & Jib.
       </ListItem>
     </Appear>
   </List>
