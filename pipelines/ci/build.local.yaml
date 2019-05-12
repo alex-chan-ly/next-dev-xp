@@ -8,7 +8,7 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/castlemilk/NEXTgen-developer-experience
+      value: https://github.com/castlemilk/next-dev-xp
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
@@ -19,6 +19,7 @@ spec:
   params:
     - name: url
       value: host.docker.local:5000/dev-xp/webapp
+      # value: registry.kube-system.svc.cluster.local/dev-xp/webapp
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Task
@@ -51,8 +52,8 @@ spec:
         - --dockerfile=${inputs.params.pathToDockerFile}
         - --destination=${outputs.resources.builtImage.url}
         - --context=${inputs.params.pathToContext}
+        - --cache=true
         - --insecure
-        - --verbosity=debug
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TaskRun

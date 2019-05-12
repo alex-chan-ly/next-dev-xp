@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: webapp
+        image: host.docker.local:5000/dev-xp/webapp
         ports:
         - name: http-server
           containerPort: 8080
