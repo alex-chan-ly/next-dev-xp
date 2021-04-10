@@ -32,7 +32,8 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: host.docker.local:5000/dev-xp/webapp
+        # image: host.docker.local:5000/dev-xp/webapp
+        image: registry.kube-system.svc.cluster.local:80/dev-xp/webapp
         ports:
         - name: http-server
           containerPort: 8080
