@@ -10,8 +10,8 @@ spec:
   selector:
     app: webapp
     tier: frontend
-  # ports:
-  # - port: 80
+  ports:
+  - port: 80
     # targetPort: http-server
 ---
 # apiVersion: apps/v1beta1
