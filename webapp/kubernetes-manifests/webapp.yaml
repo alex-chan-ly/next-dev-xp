@@ -25,8 +25,9 @@ metadata:
 spec:
   replicas: 1
   selector:
-    app: webapp
-    tier: frontend
+    matchLabels:
+      app: webapp
+      tier: frontend
   template:
     metadata:
       labels:
